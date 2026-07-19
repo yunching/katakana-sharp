@@ -128,6 +128,7 @@ export default function Home() {
     function onKeyDown(event: KeyboardEvent) {
       if (event.metaKey || event.ctrlKey || event.altKey) return;
       if (event.key === "Enter" && session.picked) {
+        event.preventDefault();
         next();
         return;
       }
@@ -158,7 +159,7 @@ export default function Home() {
           <div className="stat row"><span>Best streak</span><strong>{best}</strong></div>
           <div className="sets"><p>FOCUS SET</p>{focusSets.map((set) => <button type="button" key={set.id} className={set.id === activeSet.id ? "selected" : ""} aria-pressed={set.id === activeSet.id} onClick={() => selectFocusSet(set.id)}><span>{set.title}</span><small>{set.description} · {set.drills.length} cards</small></button>)}</div>
           <div className="my-mixups"><p>MY MIX-UPS <span>{mixups.length}</span></p>{mixups.length ? <div>{mixups.map((kana) => <button key={kana} onClick={() => toggleMixup(kana)} title={`Unmark ${kana}`} aria-label={`Unmark ${kana} as a mix-up`}>{kana}<small>×</small></button>)}</div> : <small>Wrong answers and characters you mark will appear here.</small>}</div>
-          <p className="hint">⌨ Use keys 1–4 to answer</p>
+          <p className="hint">⌨ Use keys 1–4 to answer · Enter for next</p>
         </aside>
 
         <div className={`drill-card${session.completed ? " complete" : ""}`}>
