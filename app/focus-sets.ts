@@ -12,7 +12,7 @@ export type FocusSet = {
   drills: Drill[];
 };
 
-const drills: Drill[] = [
+const challengeDrills: Drill[] = [
   { kana: "シ", answer: "shi", options: ["shi", "tsu", "so", "n"], tip: "Strokes look sideways, like a smile." },
   { kana: "ツ", answer: "tsu", options: ["shi", "tsu", "so", "n"], tip: "Strokes fall from above, like rain." },
   { kana: "ソ", answer: "so", options: ["n", "ri", "so", "tsu"], tip: "The short stroke points downward." },
@@ -33,6 +33,67 @@ const drills: Drill[] = [
   { kana: "リ", answer: "ri", options: ["i", "re", "ri", "n"], tip: "Two separate vertical strokes lean toward each other." },
   { kana: "ヤ", answer: "ya", options: ["a", "ka", "se", "ya"], tip: "Its long diagonal crosses a short central stroke." },
 ];
+
+const remainingBasicDrills: Drill[] = [
+  { kana: "ア", answer: "a", options: ["a", "ma", "ya", "se"], tip: "The right stroke bends down from a short crossbar." },
+  { kana: "イ", answer: "i", options: ["i", "ri", "to", "ni"], tip: "Two strokes angle apart instead of running parallel." },
+  { kana: "エ", answer: "e", options: ["e", "ko", "ni", "mi"], tip: "A centered vertical joins two horizontal bars." },
+  { kana: "オ", answer: "o", options: ["o", "ho", "ne", "mu"], tip: "Look for the small diagonal flick on the right." },
+  { kana: "カ", answer: "ka", options: ["ka", "ya", "se", "ke"], tip: "The right stroke drops beside a hooked left stroke." },
+  { kana: "キ", answer: "ki", options: ["ki", "sa", "mo", "mi"], tip: "Two horizontal bars cross one long diagonal." },
+  { kana: "サ", answer: "sa", options: ["sa", "ki", "se", "chi"], tip: "The short vertical cuts through the upper bar only." },
+  { kana: "ス", answer: "su", options: ["su", "nu", "mu", "ma"], tip: "An angular bend ends with a crossing diagonal." },
+  { kana: "セ", answer: "se", options: ["se", "ya", "sa", "hi"], tip: "The horizontal stroke passes through a hooked vertical." },
+  { kana: "タ", answer: "ta", options: ["ta", "ku", "ke", "ya"], tip: "A short slash sits inside the larger outer angle." },
+  { kana: "ト", answer: "to", options: ["to", "i", "ri", "na"], tip: "A small diagonal mark rests beside one vertical stroke." },
+  { kana: "ナ", answer: "na", options: ["na", "me", "ta", "nu"], tip: "A long diagonal crosses beneath a short horizontal." },
+  { kana: "ニ", answer: "ni", options: ["ni", "ko", "e", "mi"], tip: "Two horizontal strokes are short and fully separate." },
+  { kana: "ノ", answer: "no", options: ["no", "re", "i", "he"], tip: "A single diagonal falls cleanly from right to left." },
+  { kana: "ハ", answer: "ha", options: ["ha", "he", "no", "fu"], tip: "Two strokes spread apart like an open roof." },
+  { kana: "ヒ", answer: "hi", options: ["hi", "se", "bi", "mi"], tip: "The lower line turns upward at the right edge." },
+  { kana: "ヘ", answer: "he", options: ["he", "ha", "ku", "no"], tip: "Two diagonals meet in one simple peak." },
+  { kana: "ホ", answer: "ho", options: ["ho", "o", "mo", "ne"], tip: "A vertical crosses two bars with flicks on both sides." },
+  { kana: "マ", answer: "ma", options: ["ma", "mu", "a", "me"], tip: "The angular top ends in a short inward diagonal." },
+  { kana: "ミ", answer: "mi", options: ["mi", "ni", "shi", "sa"], tip: "Three parallel strokes step downward to the right." },
+  { kana: "ム", answer: "mu", options: ["mu", "ma", "su", "mo"], tip: "The bottom stroke sweeps right from a triangular bend." },
+  { kana: "モ", answer: "mo", options: ["mo", "ki", "mi", "ho"], tip: "Two bars cross a vertical that hooks left at the bottom." },
+  { kana: "ユ", answer: "yu", options: ["yu", "ko", "yo", "ro"], tip: "Two horizontal strokes join along the right side." },
+  { kana: "ヨ", answer: "yo", options: ["yo", "e", "yu", "ro"], tip: "Three horizontal strokes connect on the right." },
+  { kana: "ラ", answer: "ra", options: ["ra", "fu", "u", "chi"], tip: "A short top dash floats above a broad curve." },
+  { kana: "ル", answer: "ru", options: ["ru", "re", "ro", "u"], tip: "Two strokes finish with a sharp rightward hook." },
+  { kana: "ヲ", answer: "wo", options: ["wo", "o", "yo", "ko"], tip: "Three bars are crossed by a sweeping diagonal." },
+];
+
+const voicedDrills: Drill[] = [
+  { kana: "ガ", answer: "ga", options: ["ga", "ka", "za", "da"], tip: "It is カ with two dakuten marks at the upper right." },
+  { kana: "ギ", answer: "gi", options: ["gi", "ki", "ji", "bi"], tip: "It is キ with two dakuten marks at the upper right." },
+  { kana: "グ", answer: "gu", options: ["gu", "ku", "zu", "bu"], tip: "It is ク with two dakuten marks at the upper right." },
+  { kana: "ゲ", answer: "ge", options: ["ge", "ke", "ze", "be"], tip: "It is ケ with two dakuten marks at the upper right." },
+  { kana: "ゴ", answer: "go", options: ["go", "ko", "zo", "do"], tip: "It is コ with two dakuten marks at the upper right." },
+  { kana: "ザ", answer: "za", options: ["za", "sa", "ga", "da"], tip: "It is サ with two dakuten marks at the upper right." },
+  { kana: "ジ", answer: "ji", options: ["ji", "shi", "gi", "chi"], tip: "It is シ with dakuten; its main strokes still face sideways." },
+  { kana: "ズ", answer: "zu", options: ["zu", "su", "gu", "bu"], tip: "It is ス with two dakuten marks at the upper right." },
+  { kana: "ゼ", answer: "ze", options: ["ze", "se", "ge", "de"], tip: "It is セ with two dakuten marks at the upper right." },
+  { kana: "ゾ", answer: "zo", options: ["zo", "so", "go", "do"], tip: "It is ソ with dakuten; the short stroke still points down." },
+  { kana: "ダ", answer: "da", options: ["da", "ta", "ga", "za"], tip: "It is タ with two dakuten marks at the upper right." },
+  { kana: "ヂ", answer: "ji", options: ["ji", "chi", "de", "zu"], tip: "It is チ with dakuten, a rare spelling also read ji." },
+  { kana: "ヅ", answer: "zu", options: ["zu", "tsu", "do", "ji"], tip: "It is ツ with dakuten, a rare spelling also read zu." },
+  { kana: "デ", answer: "de", options: ["de", "te", "ze", "ge"], tip: "It is テ with two dakuten marks at the upper right." },
+  { kana: "ド", answer: "do", options: ["do", "to", "zo", "go"], tip: "It is ト with two dakuten marks at the upper right." },
+  { kana: "バ", answer: "ba", options: ["ba", "ha", "pa", "da"], tip: "It is ハ with two dakuten marks at the upper right." },
+  { kana: "ビ", answer: "bi", options: ["bi", "hi", "pi", "ji"], tip: "It is ヒ with two dakuten marks at the upper right." },
+  { kana: "ブ", answer: "bu", options: ["bu", "fu", "pu", "zu"], tip: "It is フ with two dakuten marks at the upper right." },
+  { kana: "ベ", answer: "be", options: ["be", "he", "pe", "ge"], tip: "It is ヘ with two dakuten marks at the upper right." },
+  { kana: "ボ", answer: "bo", options: ["bo", "ho", "po", "do"], tip: "It is ホ with two dakuten marks at the upper right." },
+  { kana: "パ", answer: "pa", options: ["pa", "ha", "ba", "pe"], tip: "It is ハ with a small handakuten circle at the upper right." },
+  { kana: "ピ", answer: "pi", options: ["pi", "hi", "bi", "pe"], tip: "It is ヒ with a small handakuten circle at the upper right." },
+  { kana: "プ", answer: "pu", options: ["pu", "fu", "bu", "po"], tip: "It is フ with a small handakuten circle at the upper right." },
+  { kana: "ペ", answer: "pe", options: ["pe", "he", "be", "pi"], tip: "It is ヘ with a small handakuten circle at the upper right." },
+  { kana: "ポ", answer: "po", options: ["po", "ho", "bo", "pu"], tip: "It is ホ with a small handakuten circle at the upper right." },
+];
+
+const basicDrills = [...challengeDrills, ...remainingBasicDrills];
+const drills = [...basicDrills, ...voicedDrills];
 
 function selectDrills(kana: string[]) {
   return kana.map((character) => {
@@ -62,9 +123,21 @@ export const focusSets: FocusSet[] = [
     drills: selectDrills(["ヌ", "ネ", "メ"]),
   },
   {
+    id: "basic-kana",
+    title: "All basic kana",
+    description: "46 core characters",
+    drills: basicDrills,
+  },
+  {
+    id: "voiced-kana",
+    title: "Voiced sounds",
+    description: "Dakuten & handakuten",
+    drills: voicedDrills,
+  },
+  {
     id: "mixed-review",
-    title: "Mixed review",
-    description: "All challenge cards",
+    title: "Full review",
+    description: "All 71 characters",
     drills,
   },
 ];

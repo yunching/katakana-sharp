@@ -55,6 +55,21 @@ test("named focus sets match their advertised characters", () => {
   ]);
 });
 
+test("full review covers every basic and voiced katakana character", () => {
+  const expectedKana = [
+    ..."アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン",
+    ..."ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポ",
+  ];
+  const fullReview = focusSets.find((set) => set.id === "mixed-review");
+
+  assert.ok(fullReview);
+  assert.equal(fullReview.drills.length, 71);
+  assert.deepEqual(
+    [...new Set(fullReview.drills.map((drill) => drill.kana))].sort(),
+    expectedKana.sort(),
+  );
+});
+
 test("accuracy includes the answer that was just selected", () => {
   let session = createSession();
   session = sessionReducer(session, { type: "answer", option: "shi", answer: "shi" });
