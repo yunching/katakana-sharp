@@ -86,6 +86,25 @@ export function createSession(): Session {
   return { index: 0, score: 0, answeredCount: 0, picked: null, completed: false };
 }
 
+export function createShuffledOrder(
+  cardCount: number,
+  previousOrder: number[] = [],
+  random: () => number = Math.random,
+) {
+  const order = Array.from({ length: cardCount }, (_, index) => index);
+
+  for (let index = order.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(random() * (index + 1));
+    [order[index], order[swapIndex]] = [order[swapIndex], order[index]];
+  }
+
+  if (order.length > 1 && order.every((card, index) => card === previousOrder[index])) {
+    order.push(order.shift()!);
+  }
+
+  return order;
+}
+
 export function sessionReducer(session: Session, action: SessionAction): Session {
   if (action.type === "reset") return createSession();
 

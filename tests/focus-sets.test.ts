@@ -4,11 +4,25 @@ import test from "node:test";
 import {
   calculateAccuracy,
   createSession,
+  createShuffledOrder,
   focusSets,
   parseStoredCount,
   parseStoredMixups,
   sessionReducer,
 } from "../app/focus-sets.ts";
+
+test("card order is shuffled without losing or duplicating drills", () => {
+  const order = createShuffledOrder(4, [], () => 0);
+
+  assert.deepEqual(order, [1, 2, 3, 0]);
+  assert.deepEqual([...order].sort((a, b) => a - b), [0, 1, 2, 3]);
+});
+
+test("a replay cannot repeat the exact previous card order", () => {
+  const previous = [1, 2, 3, 0];
+
+  assert.deepEqual(createShuffledOrder(4, previous, () => 0), [2, 3, 0, 1]);
+});
 
 test("focus sets contain valid recognition drills", () => {
   assert.equal(new Set(focusSets.map((set) => set.id)).size, focusSets.length);
